@@ -1,20 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Posts, {loader as postsLoader } from './routes/Posts'
+import Bookmarks, {loader as postsLoader } from './routes/Bookmarks'
 import RootLayout from './routes/RootLayout'
-import NewPost, {action as newPostAction} from './routes/NewPost'
-import PostDetails, { loader as postDetailsLoader } from './routes/PostDetails'
+import NewBookmark, {action as newBookmarkAction} from './routes/NewBookmark'
+import BookmarkDetails, { loader as bookmarkDetailsLoader } from './routes/BookmarkDetails'
 import './index.css'
 
 const router = createBrowserRouter([
   {path: '/', element: <RootLayout/>, children:[
     {path: '/', 
-    element: <Posts/>, 
+    element: <Bookmarks/>, 
     loader: postsLoader, 
     children:[
-      {path: '/create-post', element: <NewPost/>, action: newPostAction},
-      {path: '/post/:id', element: <PostDetails/>, loader: postDetailsLoader }
+      {path: '/create-bookmark', element: <NewBookmark/>, action: newBookmarkAction},
+      {path: '/bookmark/:id', element: <BookmarkDetails/>, loader: bookmarkDetailsLoader }
     ]},
   ]}, //our domain/
   
