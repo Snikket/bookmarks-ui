@@ -1,0 +1,1 @@
+export const API_ENDPOINT = "https://bookmarks-api-b5s4.onrender.com";

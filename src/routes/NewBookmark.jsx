@@ -1,6 +1,8 @@
 import classes from "./NewBookmark.module.css";
 import Modal from '../components/Modal'
 import {Link, Form, redirect } from 'react-router-dom'
+import * as Constants from '../utilities/constants'
+
 function NewBookmark() {
 
   return (
@@ -30,7 +32,7 @@ export default NewBookmark;
 export async function action({request}){
   const formData = await request.formData();
   const postData = Object.fromEntries(formData);
-  await fetch('http://ec2-51-20-87-214.eu-north-1.compute.amazonaws.com:8080/bookmarks', {
+  await fetch(Constants.API_ENDPOINT+'/bookmarks', {
     method: 'POST',
     body: JSON.stringify(postData),
     headers: {

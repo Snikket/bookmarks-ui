@@ -1,10 +1,11 @@
 import Bookmark from "./Bookmark";
 import classes from "./BookmarksList.module.css";
 import { useLoaderData } from "react-router-dom";
-
+import * as Constants from '../utilities/constants';
 function BookmarksList() {
   const bookmarks = useLoaderData();
 
+  console.log("the api endpoint is:"+Constants.API_ENDPOINT);
   return (
     <>
       {bookmarks.length > 0 && (
