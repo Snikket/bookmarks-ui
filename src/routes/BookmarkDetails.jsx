@@ -10,27 +10,6 @@ import * as Constants from '../utilities/constants'
 function PostDetails() {
   const post = useLoaderData();
 
- // Use separate state for the name input
- const [name, setName] = useState(post ? post.name : '');
-
- const handleNameChange = (event) => {
-   const { name, value } = event.target;
-
-   if (name === 'name') {
-     setName(value);
-   }
- };
-
- const [url, setUrl] = useState(post ? post.url : '');
-
- const handleUrlChange = (event) => {
-  const { url, value } = event.target;
-
-  if (url === 'url') {
-    setUrl(value);
-  }
-};
-
   console.log(post);
   if (!post) {
     return (
@@ -52,11 +31,11 @@ function PostDetails() {
     <Form method='post' className={classes.form}>
       <p>
         <label htmlFor="body">Name</label>
-        <textarea name="name" required rows={3} value={post.name} onChange={handleNameChange}/>
+        <textarea name="name" required rows={3} useRef={post.name} />
       </p>
       <p>
         <label htmlFor="name">URL</label>
-        <input type="text" name="url" required value={post.url} onChange={handleUrlChange}/>
+        <input type="text" name="url" required value={post.url} />
         <input type='hidden' name="id" value={post.id} />
       </p>
       <p className={classes.actions}>
