@@ -55,10 +55,13 @@ function PostDetails() {
 }
 
 export async function action({request}){
-  event.preventDefault(); 
   const formData = await request.formData();
   const postData = Object.fromEntries(formData);
-  await fetch(Constants.API_ENDPOINT+'/bookmarks', {
+  console.log("postData:");
+  console.log(postData);
+  console.log("Formdata:");
+  console.log(formData);
+  await fetch(Constants.API_ENDPOINT+'/bookmarks/'+postData.id, {
     method: 'POST',
     body: JSON.stringify(postData),
     headers: {
@@ -71,7 +74,7 @@ export async function action({request}){
 
 export default PostDetails;
 export async function loader(request) {
-  const response = await fetch("https://bookmarks-api-b5s4.onrender.com/bookmarks/"+request.params.id);
+  const response = await fetch("https://bookmarks-service.onrender.com/bookmarks/"+request.params.id);
   const resData = await response.json();
   return resData.bookmark;
 }
