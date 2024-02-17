@@ -1,4 +1,4 @@
-import { useLoaderData, Link, Form } from 'react-router-dom';
+import { useLoaderData, Link, Form, redirect } from 'react-router-dom';
 import React, {useState} from 'react'
 
 import Modal from '../components/Modal';
@@ -10,6 +10,11 @@ import * as Constants from '../utilities/constants'
 function PostDetails() {
   const post = useLoaderData();
 
+  const [postName, setPostName] = useState(post.name);
+
+  const [urlName, setUrlName] = useState(post.url);
+  
+  
   console.log(post);
   if (!post) {
     return (
@@ -31,11 +36,11 @@ function PostDetails() {
     <Form method='post' className={classes.form}>
       <p>
         <label htmlFor="body">Name</label>
-        <textarea name="name" required rows={3} useRef={post.name} />
+        <textarea name="name" required rows={3} value={postName} onChange={e => setPostName(e.target.value)} />
       </p>
       <p>
         <label htmlFor="name">URL</label>
-        <input type="text" name="url" required value={post.url} />
+        <input type="text" name="url" required value={urlName} onChange={e => setUrlName(e.target.value)} />
         <input type='hidden' name="id" value={post.id} />
       </p>
       <p className={classes.actions}>

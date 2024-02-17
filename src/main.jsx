@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Bookmarks, {loader as bookmarksLoader } from './routes/Bookmarks'
 import RootLayout from './routes/RootLayout'
 import NewBookmark, {action as newBookmarkAction} from './routes/NewBookmark'
-import BookmarkDetails, { loader as bookmarkDetailsLoader } from './routes/BookmarkDetails'
+import BookmarkDetails, { loader as bookmarkDetailsLoader, action as updateBookmarkAction } from './routes/BookmarkDetails'
 import './index.css'
 
 const router = createBrowserRouter([
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     loader: bookmarksLoader, 
     children:[
       {path: '/create-bookmark', element: <NewBookmark/>, action: newBookmarkAction},
-      {path: '/bookmark/:id', element: <BookmarkDetails/>, loader: bookmarkDetailsLoader }
+      {path: '/bookmark/:id', element: <BookmarkDetails/>, loader: bookmarkDetailsLoader, action: updateBookmarkAction }
     ]},
   ]}, //our domain/
   
